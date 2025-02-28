@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- Bootsrap Styles -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<!-- Ajax libs -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+		<title>Calculo de Costos</title>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row h1 justify-content-center mt-3">Calcular Costos</div>
+			<div class="row justify-content-center mt-4">
+				<input
+					id="projectName"
+					type="text"
+					class="text-center p-2 w-50"
+					placeholder="Nombre del Proyecto"
+				/>
+			</div>
+			<div id="mainInfo" class="p-4">
+				<div id="projectTitle" class="row h3 justify-content-center"></div>
+				<div class="table-responsive mt-4">
+					<table id="pricingTable" class="table table-bordered">
+						<thead class="table-dark">
+							<tr>
+								<th class="perfil-header">Perfil</th>
+								<th class="tarifa-header">Tarifa por Hora ($)</th>
+								<th class="horas-header">Horas</th>
+								<th class="total-header">Total($)</th>
+								<th class="acciones-header">Acciones</th>
+							</tr>
+						</thead>
+						<tbody></tbody>
+					</table>
+				</div>
+				<p id="granTotal" class="h5">Costo Total: $0.00</p>
+			</div>
+		</div>
+		<div class="container my-2">
+			<div class="d-flex flex-column flex-md-row justify-content-between">
+				<div>
+					<button class="btn btn-dark" onclick="agregarFila()">
+						Agregar Perfil
+					</button>
+					<button class="btn btn-dark" onclick="guardarProyecto()">
+						Guardar Proyecto
+					</button>
+					<button class="btn btn-dark" onclick="mostrarProyectos()">
+						Mostrar Proyectos
+					</button>
+				</div>
+				<div class="mt-2 mt-md-0">
+					<button class="btn btn-success" onclick="exportToExcel()">
+						Exportar a Excel
+					</button>
+					<button class="btn btn-primary" onclick="exportToImage()">
+						Exportar como JPEG
+					</button>
+				</div>
+			</div>
+		</div>
+		<!-- Own Script -->
+		<script src="main.js"></script>
+		<!-- Bootstrap Script -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>

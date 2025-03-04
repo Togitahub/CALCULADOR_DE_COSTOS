@@ -9,7 +9,6 @@ const perfiles = [
 ];
 
 const proyectos = [];
-console.log(proyectos);
 
 let tbody;
 let granTotalElement;
@@ -20,7 +19,7 @@ function initEventListeners() {
 			const projectTitle = document.querySelector("#projectTitle");
 			if (projectTitle) {
 				projectTitle.innerHTML = e.target.value;
-				e.target.value = '';
+				e.target.value = "";
 			}
 		}
 	});
@@ -132,21 +131,27 @@ function agregarFila() {
 }
 
 function guardarProyecto() {
-	let proyecto = document.querySelector("#projectTitle");
-	let costo = document.querySelector('#granTotal');
-	let nombreProyecto = proyecto.textContent;
-	let costoTotal = costo.textContent;
+	let proyecto = document.querySelector("#projectTitle").textContent;
+	let costo = document.querySelector("#granTotal").textContent;
 
-	proyectos.push({proyecto: `${nombreProyecto}`, costo: `${costoTotal}`});
+	if (proyecto === "") {
+		alert('Debes asignarle un nombre al proyecto');
+		return;
+	}
+
+	proyectos.push({ proyecto: `${proyecto}`, costo: `${costo}` });
+	alert('Proyecto guardado satisfactoriamente');
 }
 
 function mostrarProyectos() {
-	let proyectosGuardados = '';
-	for (const proyecto of proyectos) {
-		for (const propiedad in proyecto) {
-			proyectosGuardados += proyecto[propiedad]+"\n"+"\n";
-		}
+	if (proyectos.length === 0) {
+		alert("No hay proyectos guardados");
+		return;
 	}
+
+	let proyectosGuardados = proyectos.map((proyecto) => {
+		return Object.values(proyecto).join("\n");
+	}).join("\n\n");
 	alert(proyectosGuardados);
 }
 
